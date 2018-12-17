@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,19 +26,49 @@ public class MainActivity extends AppCompatActivity {
         }
 
      //este metodo realiza la suma
+     public void sumar(View view){
+        cuentas("suma");
+     }
 
-    public void sumar(View view){
+
+    //este metodo realiza la resta
+    public void restar(View view){
+        cuentas("resta");
+    }
+
+    public void multiplicar(View view){
+        cuentas("multiplicar");
+    }
+
+    public void division(View view){
+        cuentas("dividir");
+    }
+
+
+    public void cuentas(String tipoDeCuenta){
 
         String valor1 = et1.getText().toString();
         String valor2 = et2.getText().toString();
 
-        int num1 = Integer.parseInt(valor1);
-        int num2 = Integer.parseInt(valor2);
+        double num1 = Integer.parseInt(valor1);
+        double num2 = Integer.parseInt(valor2);
 
-        int suma = num1 + num2;
 
-        String result = String.valueOf(suma);
-
+        double cuenta = 0;
+        switch (tipoDeCuenta) {
+            case "suma":
+                cuenta = num1 + num2;
+            break;
+            case "resta":
+                cuenta = num1 - num2;
+                break;
+            case "dividir":
+                    cuenta = num1 / num2;
+            break;
+            case "multiplicar" :
+                cuenta = num1 * num2;
+        }
+        String result = String.valueOf(cuenta);
         tv1.setText(result);
 
     }
@@ -45,53 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
        //este metodo resta
 
-    public void restar(View view){
-
-        String valor1 = et1.getText().toString();
-        String valor2 = et2.getText().toString();
-
-        int num1 = Integer.parseInt(valor1);
-        int num2 = Integer.parseInt(valor2);
-
-        int resta = num1 - num2;
-
-        String result = String.valueOf(resta);
-
-        tv1.setText(result);
-
-    }
 
 
-    public void multiplicar(View view){
-
-        String valor1 = et1.getText().toString();
-        String valor2 = et2.getText().toString();
-
-        int num1 = Integer.parseInt(valor1);
-        int num2 = Integer.parseInt(valor2);
-
-        int multiplicar = num1 * num2;
-
-        String result = String.valueOf(multiplicar);
-
-        tv1.setText(result);
-
-    }
 
 
-    public void dividir(View view){
 
-        String valor1 = et1.getText().toString();
-        String valor2 = et2.getText().toString();
-
-        int num1 = Integer.parseInt(valor1);
-        int num2 = Integer.parseInt(valor2);
-
-        int division = num1 / num2;
-
-        String result = String.valueOf(division);
-
-        tv1.setText(result);
-
-    }
 }
